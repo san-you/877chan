@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :boards
   devise_for :users
   root 'pages#index'
   get 'pages/show'
