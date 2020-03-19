@@ -5,5 +5,33 @@
   <%= @board.title %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @board.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.content %></td>
+        <td><%= link_to 'Show', comment %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>コメント追加：</h3>
+<%= form_for @comment do |f| %>
+<p>コメント:</p><p><%= f.text_area :content, :rows => 5 %></p>
+<%= f.submit 'コメントを投稿する' %>
+<%= f.hidden_field :board_id, value: @board.id %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<% end %>
+
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>

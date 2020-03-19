@@ -9,6 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <nav>
     <% if user_signed_in? %>
+    <%= link_to 'スレ一覧', root_path %>
     <strong><%= link_to current_user.email, pages_show_path %></strong>
     <%= link_to 'プロフィール変更', edit_user_registration_path %>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
