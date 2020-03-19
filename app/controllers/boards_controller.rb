@@ -12,11 +12,13 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     @comment = Comment.new
+    @category_settings = @board.category_settings
   end
 
   # GET /boards/new
   def new
     @board = Board.new
+    @categories = Category.all
   end
 
   # GET /boards/1/edit
@@ -27,6 +29,15 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
+
+    # TODO: 保存失敗時
+    categories_params[:categories].each do |category_id|
+      @category_setting = CategorySetting.new
+      @category_setting.board = @board
+      @category_setting.category = Category.find(category_id)
+      @category_setting.save
+    end
+    
 
     respond_to do |format|
       if @board.save
@@ -72,5 +83,9 @@ class BoardsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def board_params
       params.require(:board).permit(:title)
+    end
+
+    def categories_params
+      params.require(:board).permit(categories: [])
     end
 end

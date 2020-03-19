@@ -8,6 +8,23 @@
 <table>
   <thead>
     <tr>
+      <th>カテゴリ</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category_settings.each do |category_setting| %>
+      <tr>
+        <td><%= category_setting.category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
       <th>Content</th>
       <th colspan="3"></th>
     </tr>
