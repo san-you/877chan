@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_121228) do
+ActiveRecord::Schema.define(version: 2020_03_19_140756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 2020_03_19_121228) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_settings", force: :cascade do |t|
+    t.bigint "board_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_category_settings_on_board_id"
+    t.index ["category_id"], name: "index_category_settings_on_category_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -43,6 +58,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_121228) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "category_settings", "boards"
+  add_foreign_key "category_settings", "categories"
   add_foreign_key "comments", "boards"
   add_foreign_key "comments", "users"
 end
