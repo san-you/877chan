@@ -14,4 +14,17 @@
  *= require material_icons
  *= require_self
  */
+ @import "materialize/components/color-variables";
+ $primary-color: color("amber", "base") !default;
+ $secondary-color: color("blue-grey", "base") !default;
  @import 'materialize';
+
+ body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
