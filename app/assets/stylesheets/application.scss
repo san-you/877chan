@@ -28,3 +28,10 @@
 main {
   flex: 1 0 auto;
 }
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+}
