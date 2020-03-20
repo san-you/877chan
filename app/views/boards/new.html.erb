@@ -3,42 +3,42 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">新規スレッド作成</span>
-        <div class="section scrollspy">
-          <%= form_for @board do |f| %>
-          <div class="input-field">
-            <%= f.label :title, "タイトル" %><br />
-            <%= f.text_field :title %>
-          </div>
-        </div>
-
-        <span>カテゴリ</span>
-        <div class="section scrollspy row">
-          <% @categories.each do |category| %>
-            <div class="col s3">
-              <%= f.label "categories" + "_" + category.id.to_s do %>
-                <%= f.check_box(:categories, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false }, category.id ) %>
-                <span><%= category.name %></span>
-              <% end %>
+        <%= form_for @board do |f| %>
+          <div class="section scrollspy">
+            <div class="input-field">
+              <%= f.label :title, "タイトル" %><br />
+              <%= f.text_field :title %>
             </div>
-          <% end %>
-        </div>
+          </div>
 
-        <div class="section scrollspy">
-          <%= link_to new_category_path, class: 'waves-effect waves-light btn' do %>
-          <i class="material-icons right">add_circle</i>
-          <span>新規カテゴリ作成</span>
-          <% end %>
-        </div>
-
-        <div class="section scrollspy">
-          <div class="input-field right-align">
-            <%= button_tag class: 'btn waves-effect waves-light' do %>
-              <%= content_tag :i, "send", class: "material-icons right" %>
-              スレッド作成
+          <span>カテゴリ</span>
+          <div class="section scrollspy row">
+            <% @categories.each do |category| %>
+              <div class="col s3">
+                <%= f.label "categories" + "_" + category.id.to_s do %>
+                  <%= f.check_box(:categories, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false }, category.id ) %>
+                  <span><%= category.name %></span>
+                <% end %>
+              </div>
             <% end %>
           </div>
+
+          <div class="section scrollspy">
+            <%= link_to new_category_path, class: 'waves-effect waves-light btn' do %>
+            <i class="material-icons right">add_circle</i>
+            <span>新規カテゴリ作成</span>
+            <% end %>
+          </div>
+
+          <div class="section scrollspy">
+            <div class="input-field right-align">
+              <%= button_tag class: 'btn waves-effect waves-light' do %>
+                <%= content_tag :i, "send", class: "material-icons right" %>
+                スレッド作成
+              <% end %>
+            </div>
+          </div>
         <% end %>
-        </div>
 
         <%= link_to boards_path, class: 'waves-effect waves-light btn' do %>
         <i class="material-icons left">arrow_back</i>
