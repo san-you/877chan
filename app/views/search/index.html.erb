@@ -1,26 +1,51 @@
-<h1>検索画面</h1>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">スレ、レス検索</span>
 
-<%= form_with(url: search_index_path, method: :get , local: true) do |f| %>
-<p>検索条件:</p><p><%= f.text_field :query, :rows => 5, value:@query %></p>
-<%= f.submit '検索' %>
-<% end %>
+          <div class="section scrollspy">
+            <%= form_with(url: search_index_path, method: :get , local: true) do |f| %>
+            <div class="input-field">
+              <%= f.label :query, "検索条件" %><br />
+              <%= f.text_field :query, value: @query%>
+          </div>
+            <div class="input-field right-align">
+              <%= button_tag class: 'btn waves-effect waves-light' do %>
+              <%= content_tag :i, "send", class: "material-icons right" %>
+              検索
+            <% end %>
+            </div>
+            <% end %>
+          </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>種類</th>
-      <th>内容</th>
-      <th></th>
-    </tr>
-  </thead>
+          <div class="section scrollspy">
+            <table>
+              <thead>
+                <tr>
+                  <th>種類</th>
+                  <th>内容</th>
+                  <th></th>
+                </tr>
+              </thead>
 
-  <tbody>
-    <% @search_results.each do |result| %>
-      <tr>
-        <td><%= result.type %></td>
-        <td><%= result.content %></td>
-        <td><%= link_to 'Show', result.object %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <tbody>
+                <% @search_results.each do |result| %>
+                  <tr>
+                    <td><%= result.type %></td>
+                    <td><%= result.content %></td>
+                    <td>          
+                      <%= link_to result.object, class: 'right waves-effect waves-light btn' do %>
+                      <i class="material-icons left">cloud</i>
+                      <span>表示</span>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
