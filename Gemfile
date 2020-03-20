@@ -38,6 +38,10 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
+# Materialize
+gem 'materialize-sass', '~> 1.0.0'
+gem 'material_icons' 
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

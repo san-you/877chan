@@ -7,24 +7,48 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <nav>
-    <% if user_signed_in? %>
-    <%= link_to 'スレ一覧', root_path %>
-    <%= link_to '検索', search_index_path %>
-    <strong><%= link_to current_user.email, pages_show_path %></strong>
-    <%= link_to 'プロフィール変更', edit_user_registration_path %>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-    <% else %>
-    <%= link_to 'サインアップ', new_user_registration_path %>
-    <%= link_to 'ログイン', new_user_session_path %>
-    <% end %>
-</nav>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/boards" class="brand-logo">877chan</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if user_signed_in? %>
+            <li><%= link_to 'スレ一覧', root_path %></li>
+            <li><%= link_to '検索', search_index_path %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </main>
 
-    <%= yield %>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">877chan</h5>
+            <p class="grey-text text-lighten-4">お問い合わせはyusanu02@gmail.comまで</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container center">
+        ©2020 Yutaro Sanuki
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
