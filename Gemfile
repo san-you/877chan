@@ -44,6 +44,12 @@ gem 'material_icons'
 
 gem 'kaminari'
 
+# debug
+gem 'ruby-debug-ide'
+gem 'debase'
+
+gem 'rubocop'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
