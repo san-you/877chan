@@ -12,7 +12,7 @@
           </div>
             <div class="input-field right-align">
               <%= button_tag class: 'btn waves-effect waves-light' do %>
-              <%= content_tag :i, "send", class: "material-icons right" %>
+              <%= content_tag :i, "search", class: "material-icons right" %>
               検索
             <% end %>
             </div>
@@ -36,7 +36,7 @@
                     <td><%= result.content %></td>
                     <td>          
                       <%= link_to result.object, class: 'right waves-effect waves-light btn' do %>
-                      <i class="material-icons left">cloud</i>
+                      <i class="material-icons right">keyboard_arrow_right</i>
                       <span>表示</span>
                       <% end %>
                     </td>
