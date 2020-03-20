@@ -1,29 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <h3 class="header">スレ一覧</h3>
-
-<%= link_to new_board_path, class: 'waves-effect waves-light btn' do%>
-  <i class="material-icons left">cloud</i>
-  <span>新規スレッド</span>
-<% end %>
-
-<table class="responsive-table">
-  <thead>
-    <tr>
-      <th>タイトル</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @boards.each do |board| %>
+<div class="section scrollspy">
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to board.title, board %></td>
+        <th>タイトル</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @boards.each do |board| %>
+        <tr>
+          <td><%= link_to board.title, board %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-
-<br>
+<div class="section scrollspy right-align">
+  <%= link_to new_board_path, class: 'waves-effect waves-light btn' do%>
+    <i class="material-icons left">cloud</i>
+    <span>新規スレッド</span>
+  <% end %>
+</div>
