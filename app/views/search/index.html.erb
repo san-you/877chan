@@ -1,0 +1,26 @@
+<h1>検索画面</h1>
+
+<%= form_with(url: search_index_path, method: :get , local: true) do |f| %>
+<p>検索条件:</p><p><%= f.text_field :query, :rows => 5, value:@query %></p>
+<%= f.submit '検索' %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>内容</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @search_results.each do |result| %>
+      <tr>
+        <td><%= result.type %></td>
+        <td><%= result.content %></td>
+        <td><%= link_to 'Show', result.object %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
