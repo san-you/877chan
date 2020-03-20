@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">レス詳細</span>
+        <div class="section scrollspy">
+        <p>内容:</p>
+        <div style="margin-bottom: 8px;"><%= @comment.content %></div>
+        <p>スレッド:</p>
+        <div style="margin-bottom: 8px;"><%= @comment.board.title %></div>
+        <p>ユーザ:</p>
+        <div style="margin-bottom: 8px;"><%= @comment.user.email %></div>
+        </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @comment.content %>
-</p>
+        <%= link_to search_index_path, class: 'waves-effect waves-light btn' do %>
+        <i class="material-icons left">cloud</i>
+        <span>戻る</span>
+        <% end %>
 
-<p>
-  <strong>Board:</strong>
-  <%= @comment.board.title %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @comment.user.email %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', search_index_path %>
+      </div>
+    </div>
+  </div>
+</div>
