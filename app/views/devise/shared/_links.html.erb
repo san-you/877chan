@@ -1,13 +1,13 @@
 <%- if controller_name != 'sessions' %>
   <%= link_to new_session_path(resource_name), class: 'waves-effect waves-light btn' do %>
-    <i class="material-icons left">cloud</i>
+    <i class="material-icons left">keyboard_arrow_right</i>
     <span>ログイン</span>
   <% end %>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations'%>
   <%= link_to new_registration_path(resource_name), class: 'waves-effect waves-light btn' do%>
-    <i class="material-icons left">cloud</i>
+    <i class="material-icons left">create</i>
     <span>登録</span>
   <% end %>
 <% end %>
