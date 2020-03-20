@@ -1,22 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>掲示板一覧</h1>
+<h3 class="header">スレ一覧</h3>
 
-<table>
+<%= link_to new_board_path, class: 'waves-effect waves-light btn' do%>
+  <i class="material-icons left">cloud</i>
+  <span>新規スレッド</span>
+<% end %>
+
+<table class="responsive-table">
   <thead>
     <tr>
-      <th>スレタイ</th>
-      <th colspan="3"></th>
+      <th>タイトル</th>
     </tr>
   </thead>
 
   <tbody>
     <% @boards.each do |board| %>
       <tr>
-        <td><%= board.title %></td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to board.title, board %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,5 @@
 
 <br>
 
-<%= link_to 'New Board', new_board_path %>
+
+<br>

@@ -1,54 +1,60 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>スレタイ:</strong>
-  <%= @board.title %>
-</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>カテゴリ</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @category_settings.each do |category_setting| %>
+<h3 class="header"><%= @board.title %></h3>
+<div class="section scrollspy">
+  <table>
+    <thead>
       <tr>
-        <td><%= category_setting.category.name %></td>
+        <th>カテゴリ</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <tbody>
+      <% @category_settings.each do |category_setting| %>
+        <tr>
+          <td><%= category_setting.category.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-  <tbody>
-    <% @board.comments.each do |comment| %>
+<div class="section scrollspy">
+  <table>
+    <thead>
       <tr>
-        <td><%= comment.content %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>レス一覧</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<h3>コメント追加：</h3>
-<%= form_for @comment do |f| %>
-<p>コメント:</p><p><%= f.text_area :content, :rows => 5 %></p>
-<%= f.submit 'コメントを投稿する' %>
-<%= f.hidden_field :board_id, value: @board.id %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<% end %>
+    <tbody>
+      <% @board.comments.each do |comment| %>
+        <tr>
+          <td><%= comment.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<div class="section scrollspy">
+  <%= form_for @comment do |f| %>
+  <p>新規レス:</p>
+  <div class="input-field">
+    <p><%= f.text_area :content, :rows => 5 %></p>
+  </div>
+  <%= button_tag type: "submit", class: "right btn waves-effect waves-light" do %>
+    <i class="material-icons right">send</i>
+    投稿する
+  <% end %>
+  <%= f.hidden_field :board_id, value: @board.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+</div>
+
+<div class="section scrollspy">
+  <%= link_to boards_path, class: 'waves-effect waves-light btn' do %>
+  <i class="material-icons left">cloud</i>
+  <span>戻る</span>
+  <% end %>
+</div>
