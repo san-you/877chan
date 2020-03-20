@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to board_url(id:  @comment.board_id), notice: 'コメントは投稿されました。' }
+        format.html { redirect_to board_url(id: @comment.board_id), notice: 'コメントは投稿されました。' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

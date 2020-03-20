@@ -7,13 +7,13 @@
 
 <p>
   <strong>Board:</strong>
-  <%= @comment.board %>
+  <%= @comment.board.title %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @comment.user %>
+  <%= @comment.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Back', search_index_path %>
