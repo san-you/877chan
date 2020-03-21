@@ -5,7 +5,9 @@
         <span class="card-title">新規カテゴリ作成</span>
 
           <% if @category.errors.any? %>
-            <p>カテゴリ名が未入力です。</p>
+            <% @category.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
           <% end %>
 
         <%= form_for @category do |f| %>
