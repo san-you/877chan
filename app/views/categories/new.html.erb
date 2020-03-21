@@ -4,6 +4,10 @@
       <div class="card-content">
         <span class="card-title">新規カテゴリ作成</span>
 
+          <% if @category.errors.any? %>
+            <p>カテゴリ名が未入力です。</p>
+          <% end %>
+
         <%= form_for @category do |f| %>
           <div class="input-field">
             <%= f.label :name, "カテゴリ名" %><br />
@@ -20,7 +24,7 @@
         <% end %>
 
         <div class="section scrollspy">
-          <%= link_to new_board_path, class: 'waves-effect waves-light btn' do %>
+          <%= link_to :back, class: 'waves-effect waves-light btn' do %>
           <i class="material-icons left">arrow_back</i>
           <span>戻る</span>
           <% end %>
