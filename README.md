@@ -1,24 +1,46 @@
-# README
+# 877chan.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+5ch風の掲示板です。
+Rails + PostgreSQL + Dockerで作成しています。
+デザインはMaterializeを使用しています。
 
-Things you may want to cover:
+herokuにデプロイしています。
+こちらからアクセスしてください。
+https://banana-chan.herokuapp.com/
 
-* Ruby version
+最初の読み込みが遅い場合がありますがサーバーが立ち上がっているので少々お待ちください。
 
-* System dependencies
+## 使い方
 
-* Configuration
+### ユーザ登録
+ユーザを登録するかログインしてください。
+メールアドレスの認証はしていません。
+また、パスワードも暗号化されて保存されています。
+なので気軽に適当なユーザを作成してください。
+また、ログイン機能にはDeviseを使用しています。
 
-* Database creation
+### スレ一覧
+ログインするかメニューのスレ一覧をクリックすると現在作成されているスレッドの一覧が表示されます。
+ページングにはKaminariを使用しています。
 
-* Database initialization
+### スレ詳細
+スレッドのタイトル、カテゴリ、対象のスレについたレス一覧をメールアドレス、作成日時と共に表示しています。また、レスの投稿もこの画面でできます。
 
-* How to run the test suite
+### 新規スレッド作成
+スレ一覧から新規スレッドボタンを押下すると新規スレッド作成画面になります。
+スレッドのタイトル、カテゴリを選択して作成してください。
+タイトルのみ必須です。
 
-* Services (job queues, cache servers, search engines, etc.)
+### 新規カテゴリ作成
+新規スレッド作成画面から新規カテゴリボタンを押下すると新規カテゴリ作成画面になります。
+カテゴリ名を入力して保存してください。
+カテゴリ名は必須です。
 
-* Deployment instructions
+### スレ、レス検索
+スレのタイトルとレスの内容をあいまい検索できます。
+キーワードを入力して検索すると該当するスレ、レスの一覧が表示されます。
+表示ボタンを押下するとスレッドならスレッドの詳細画面、レスならレスの詳細画面を表示します。
 
-* ...
+### レス詳細
+レスの詳細を表示しています。
