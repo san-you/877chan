@@ -5,7 +5,7 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all.page(params[:page]).per(5)
+    @boards = Board.all.order(id: "DESC").page(params[:page]).per(5)
   end
 
   # GET /boards/1
