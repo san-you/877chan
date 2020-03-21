@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to board_url(id: @comment.board_id), notice: 'レスが投稿されました。' }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { render render template: "boards/show" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

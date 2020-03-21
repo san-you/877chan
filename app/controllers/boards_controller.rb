@@ -29,15 +29,16 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
+    @categories = Category.all
 
-    # TODO: 保存失敗時
-    categories_params[:categories].each do |category_id|
-      @category_setting = CategorySetting.new
-      @category_setting.board = @board
-      @category_setting.category = Category.find(category_id)
-      @category_setting.save
+    if categories_params[:categories]
+      categories_params[:categories].each do |category_id|
+        @category_setting = CategorySetting.new
+        @category_setting.board = @board
+        @category_setting.category = Category.find(category_id)
+        @category_setting.save
+      end
     end
-    
 
     respond_to do |format|
       if @board.save

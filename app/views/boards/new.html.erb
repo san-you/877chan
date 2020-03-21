@@ -3,6 +3,10 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">新規スレッド作成</span>
+        <% if @board.errors.any? %>
+          <p>タイトルが未入力です。</p>
+        <% end %>
+
         <%= form_for @board do |f| %>
           <div class="section scrollspy">
             <div class="input-field">
