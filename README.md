@@ -1,5 +1,7 @@
 # 877chan.
 
+![スクリーンショット 2020-03-21 15 06 05](https://user-images.githubusercontent.com/50412560/77220647-a61d9380-6b85-11ea-876b-691b8df3a1cc.png)
+
 ## 概要
 5ch風の掲示板です。
 Rails + PostgreSQL + Dockerで作成しています。
