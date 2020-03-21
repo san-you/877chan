@@ -25,13 +25,15 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @board = Board.find(@comment.board_id)
+    @category_settings = @board.category_settings
 
     respond_to do |format|
       if @comment.save
         format.html { redirect_to board_url(id: @comment.board_id), notice: 'レスが投稿されました。' }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render render template: "boards/show" }
+        format.html { render template: "boards/show" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
